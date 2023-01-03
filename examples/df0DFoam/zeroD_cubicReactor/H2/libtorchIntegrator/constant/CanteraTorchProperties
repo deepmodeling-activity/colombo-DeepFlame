@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version          2.0;
+    format           ascii;
+    class            dictionary;
+    location         "constant";
+    object           CanteraTorchProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+chemistry            on;
+
+CanteraMechanismFile "ES80_H2-7-16.yaml";
+
+transportModel       "Mix";
+
+odeCoeffs
+{
+    "relTol"         1e-6;
+    "absTol"         1e-10;
+}
+
+inertSpecie          "N2";
+
+zeroDReactor
+{
+    constantProperty "pressure";
+}
+
+splittingStrategy    off;
+
+TorchSettings
+{
+    torch            on;
+    GPU              on;
+    log              on;
+    torchModel1      "new_ESH2sub1.pt"; 
+    torchModel2      "new_ESH2sub2.pt"; 
+    torchModel3      "new_ESH2sub3.pt"; 
+    coresPerGPU      4;
+    GPUsPerNode      4;
+}
+
+loadbalancing
+{
+    active           true;
+    log              false;
+}
+
+
+// ************************************************************************* //
