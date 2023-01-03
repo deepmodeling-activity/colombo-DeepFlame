@@ -1,0 +1,13 @@
+hexRef = polyTopoChange/polyTopoChange/hexRef
+
+$(hexRef)/hexRef.C
+$(hexRef)/hexRefData.C
+$(hexRef)/dfRefinementHistory.C
+$(hexRef)/hexRefNew.C
+
+$(hexRef)/hexRef8/hexRef8.C
+$(hexRef)/hexRef4/hexRef4.C
+$(hexRef)/hexRef4Axi/hexRef4Axi.C
+$(hexRef)/hexRef2/hexRef2.C
+
+LIB = $(DF_LIBBIN)/libnewdynamicMesh
